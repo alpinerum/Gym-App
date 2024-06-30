@@ -55,6 +55,12 @@
   </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <div class="cart-length"></div>
+      <ion-icon name="cart" class="cart-icon"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 1</ion-title>
@@ -65,6 +71,19 @@
     <swiper-slide><img src="assets/gym1.jpg"></swiper-slide>
     <swiper-slide><img src="assets/gym2.jpg"></swiper-slide>
   </swiper-container>
+  <h3 style="text-align: center;">Browse our store!</h3>
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center"><ion-button expand="block">Shop</ion-button></ion-col>
+    </ion-row>
+  </ion-grid>
+  <h3 style="text-align: center;">Have any questions?</h3>
+  <p style="text-align: center;">Want to know more about our gym? Want to meet with one of our personal trainers to get a personalized workout? Book an appointment today!</p>
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center"><ion-button expand="block">Book an appointment</ion-button></ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
 
 
