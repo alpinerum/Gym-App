@@ -67,7 +67,14 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-card>
+  <ion-item *ngFor="let product of products">
+    <ion-card>
+      <img src={{product.image}} width="100%">
+      <ion-card-header>
+        <ion-card-title>{{product.name}}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
     
-  </ion-card>
+  </ion-item>
+
 </ion-content>
