@@ -12,11 +12,11 @@ export class ProductsService {
   getProducts():Observable<Product[]> {
     const headers = new HttpHeaders({'Content-Type': 'application/json', 'Accept': 'application/json'});
     const options = {headers: headers};
-    return this.http.get<Product[]>('http://localhost:3000/product/getProducts', options);
+    return this.http.get<Product[]>('http://localhost:3000/products/getProducts', options);
   }
   addProduct(form: any):Observable<Product[]> {
     const headers = new HttpHeaders({'Content-Type': 'application/json', 'Accept': 'application/json'});
     const options = {headers: headers};
-    return this.http.post<Product[]>('http://localhost:3000/product/addProduct', form, options);
+    return this.http.post<Product[]>('http://localhost:3000/products/addProduct', form, options);
   }
 }
