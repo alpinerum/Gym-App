@@ -61,6 +61,12 @@
   </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openCart()">
+      <div class="cart-length">{{ itemCount | async }}</div>
+      <ion-icon name="cart" class="cart-icon"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 2</ion-title>
@@ -76,7 +82,11 @@
       </ion-card-header>
       <ion-card-content>
         <ion-text>{{product.description}}</ion-text><br>
-        <ion-label color="dark"><h2>${{product.price}}</h2></ion-label>
+        <ion-item class="ion-no-padding" lines="none">
+          <ion-label color="dark"><h2>${{product.price}}</h2></ion-label>
+          <ion-buttons slot="end"><ion-button fill="solid" color="primary">Add to Cart</ion-button></ion-buttons>
+        </ion-item>
+        
       </ion-card-content>
     </ion-card>
     

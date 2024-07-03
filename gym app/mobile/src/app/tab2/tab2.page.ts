@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductsService } from '../products.service';
+import { CartService } from '../cart.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-tab2',
@@ -8,8 +10,11 @@ import { ProductsService } from '../products.service';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit{
-products: Product[] = [];
-  constructor(private service: ProductsService) {}
+  cart = [];
+  products: Product[] = [];
+  itemCount!: BehaviorSubject<number>;
+  
+  constructor(private service: ProductsService, private cartService : CartService) {}
 
   ngOnInit(): void {
   //   this.products = [
@@ -29,5 +34,13 @@ products: Product[] = [];
   //     }
   // ];
     this.service.getProducts().subscribe((res)=>this.products=res);
+    this.cart = this.cartService.getCart();
+    this.itemCount = this.cartService.getCartItemCount();
+  }
+  addToCart(product: any) {
+
+  }
+  openCart() {
+    
   }
 }
