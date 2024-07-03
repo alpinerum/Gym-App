@@ -75,7 +75,8 @@
         <ion-card-title>{{product.name}}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        ${{product.price}}
+        <ion-text>{{product.description}}</ion-text><br>
+        <ion-label color="dark"><h2>${{product.price}}</h2></ion-label>
       </ion-card-content>
     </ion-card>
     
