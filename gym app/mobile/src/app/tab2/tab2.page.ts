@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Product } from '../product';
 import { ProductsService } from '../products.service';
 import { CartService } from '../cart.service';
 import { BehaviorSubject } from 'rxjs';
+import { ModalController } from '@ionic/angular';
+import { CartModelPage } from '../cart-model/cart-model.page';
 
 @Component({
   selector: 'app-tab2',
@@ -10,11 +12,14 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit{
-  cart = [];
+  cart: Product[] = [];
   products: Product[] = [];
   itemCount!: BehaviorSubject<number>;
+
+  @ViewChild('cart', { static: false, read: ElementRef })
+  fab!: ElementRef;
   
-  constructor(private service: ProductsService, private cartService : CartService) {}
+  constructor(private service: ProductsService, private cartService : CartService, private modalCtrl : ModalController) {}
 
   ngOnInit(): void {
   //   this.products = [
@@ -38,9 +43,16 @@ export class Tab2Page implements OnInit{
     this.itemCount = this.cartService.getCartItemCount();
   }
   addToCart(product: any) {
-
+    this.cartService.addProduct(product);
   }
-  openCart() {
-    
+  async openCart() {
+    let model = await this.modalCtrl.create({
+      component: CartModelPage,
+      cssClass: 'cart-model'
+    });
+    model.onWillDismiss().then(()=> {
+      this.fab.nativeElement.classList.remove('animated', 'bounceOutLeft');
+    });
+    model.present();
   }
 }

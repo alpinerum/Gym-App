@@ -7,7 +7,8 @@ router.post('/addProduct', (req, res)=>{
         name: req.body.name,
         description: req.body.description,
         category: req.body.category,
-        price: req.body.price
+        price: req.body.price,
+        quantity: req.body.quantity
     }).then((product)=>{
         return res.status(200).json({msg: `${product.name} has been added`})}).catch((err)=>{return res.status(500);});
 });
