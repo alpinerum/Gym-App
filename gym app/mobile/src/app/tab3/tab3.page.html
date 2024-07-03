@@ -66,5 +66,19 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-item *ngFor="let service of services">
+    <ion-card>
+      <img src={{service.image}} height="auto">
+      <ion-card-header>
+        <ion-card-title>{{service.name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-text><h3>{{service.description}}</h3></ion-text><br>
+        ${{service.price}} per {{service.duration}}
+      </ion-card-content>
+    </ion-card>
+    
+  </ion-item>
+
   <app-explore-container name="Tab 3 page"></app-explore-container>
 </ion-content>
