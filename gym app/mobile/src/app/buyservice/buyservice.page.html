@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Shopping Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <div class="ion-text-end">
+    <ion-button (click)="close()" fill="clear" color="dark">
+      <ion-icon name="close" slot="start"></ion-icon>
+    </ion-button>
+  </div>
+  
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="6" class="ion-align-self-center">
+        {{gym_service.name}}
+      </ion-col>
+      <ion-col size="6" class="ion-align-self-center">
+        ${{gym_service.price}} per {{gym_service.duration}}<br>
+      </ion-col>
+      Total: ${{gym_service.price}}
+    </ion-row>
+  </ion-grid>
+
+  <ion-button expand="full" (click)="checkout()">
+   PURCHASE
+  </ion-button>
+</ion-content>

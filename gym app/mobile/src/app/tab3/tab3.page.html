@@ -76,7 +76,7 @@
         <ion-text><h3>{{service.description}}</h3></ion-text><br>
         <ion-item class="ion-no-padding" lines="none">
           <ion-label color="dark"><h2>${{service.price}} per {{service.duration}}</h2></ion-label>
-          <ion-buttons slot="end"><ion-button fill="solid" color="primary">
+          <ion-buttons slot="end"><ion-button fill="solid" color="primary" (click)="openCart(service)">
             Buy Now</ion-button></ion-buttons>
         </ion-item>
         
