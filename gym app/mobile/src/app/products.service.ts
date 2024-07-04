@@ -19,4 +19,10 @@ export class ProductsService {
     const options = {headers: headers};
     return this.http.post<Product[]>('http://localhost:3000/products/addProduct', form, options);
   }
+  changeStock(id: any, quantity: number):Observable<Product[]> {
+    const headers = new HttpHeaders({'Content-Type': 'application/json', 'Accept': 'application/json'});
+    const options = {headers: headers};
+    return this.http.patch<Product[]>(`http://localhost:3000/products/changeStock/${id}/${quantity}`, options);
+
+  }
 }

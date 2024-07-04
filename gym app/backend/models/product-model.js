@@ -8,7 +8,8 @@ const Product = sequelize.define('Product', {
         description: {type: Sequelize.TEXT('medium'), allowNull: false},
         category: { type: Sequelize.STRING , allowNull: false },
         price: { type: Sequelize.FLOAT, allowNull: false},
-        quantity: { type: Sequelize.INTEGER, allowNull: false}
+        quantity: { type: Sequelize.INTEGER, allowNull: false},
+        inStock: {type: Sequelize.INTEGER, allowNull: false}
     
 }, {freezeTableName: true});
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { CartService } from '../cart.service';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-cart-model',
@@ -11,7 +11,7 @@ import { ModalController } from '@ionic/angular';
 export class CartModelPage implements OnInit {
 
   cart: Product[] = [];
-  constructor(private cartService: CartService, private modalCtrl: ModalController) { }
+  constructor(private cartService: CartService, private modalCtrl: ModalController, private alertCtrl: AlertController) { }
 
   ngOnInit() {
     this.cart = this.cartService.getCart();
@@ -38,6 +38,13 @@ export class CartModelPage implements OnInit {
   }
 
   async checkout() {
-    
+    let alert = await this.alertCtrl.create({
+      header: 'Thanks for your order!',
+      message: 'Your order will be delivered as soon as possible',
+      buttons: ['OK']
+    });
+    alert.present().then(()=> {
+      this.modalCtrl.dismiss();
+    });
   }
 }

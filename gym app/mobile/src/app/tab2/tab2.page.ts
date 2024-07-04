@@ -55,4 +55,7 @@ export class Tab2Page implements OnInit{
     });
     model.present();
   }
+  checkSoldOut(product: any) {
+    return (product.inStock <= 0);
+  }
 }

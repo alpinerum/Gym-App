@@ -84,9 +84,10 @@
         <ion-text>{{product.description}}</ion-text><br>
         <ion-item class="ion-no-padding" lines="none">
           <ion-label color="dark"><h2>${{product.price}}</h2></ion-label>
-          <ion-buttons slot="end"><ion-button fill="solid" color="primary" (click)="addToCart(product)">Add to Cart</ion-button></ion-buttons>
+          <ion-buttons slot="end"><ion-button fill="solid" color="primary" (click)="addToCart(product)" [disabled]="checkSoldOut(product)">
+            Add to Cart</ion-button></ion-buttons>
         </ion-item>
-        quantity: {{product.quantity}}
+        quantity: {{product.inStock}}
         
       </ion-card-content>
     </ion-card>
