@@ -30,8 +30,8 @@ router.get('/getProduct/:id', (req, res)=>{
     });
 });
 
-router.patch('/changeStock/:id/:quantity', (req, res)=>{
-    Product.findOne({where: {ID: req.params.id}}).then((product)=>{
+router.patch('/changeStock/:name/:quantity', (req, res)=>{
+    Product.findOne({where: {name: req.params.name}}).then((product)=>{
         if (product != null) {
             // console.log(req.params['quantity']);
             // console.log(product.inStock);

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { CartService } from '../cart.service';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController, NavController } from '@ionic/angular';
+import { ProductsService } from '../products.service';
 
 @Component({
   selector: 'app-cart-model',
@@ -11,9 +12,11 @@ import { AlertController, ModalController } from '@ionic/angular';
 export class CartModelPage implements OnInit {
 
   cart: Product[] = [];
-  constructor(private cartService: CartService, private modalCtrl: ModalController, private alertCtrl: AlertController) { }
+  products: Product[] = [];
+  constructor(private cartService: CartService, private modalCtrl: ModalController, private alertCtrl: AlertController, private navCtrl: NavController, private service: ProductsService) { }
 
   ngOnInit() {
+    this.service.getProducts().subscribe((res)=>this.products=res);
     this.cart = this.cartService.getCart();
   }
 
@@ -46,5 +49,11 @@ export class CartModelPage implements OnInit {
     alert.present().then(()=> {
       this.modalCtrl.dismiss();
     });
+    for (let item of this.cart) {
+      //console.log(item.name);
+      this.cartService.subtractStock(item.name, item.quantity);
+    }
+    //window.location.reload();
   }
+  
 }

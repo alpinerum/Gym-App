@@ -64,4 +64,9 @@ export class CartService {
       }
     }
   }
+
+  subtractStock(product: any, quantity: number) {
+    this.service.changeStock(product, quantity*-1).subscribe((msg)=>{console.log(product)});
+    //product.inStock -= Number(quantity);
+  }
 }
