@@ -13,6 +13,34 @@ const routes: Routes = [
   {
     path: 'buyservice',
     loadChildren: () => import('./buyservice/buyservice.module').then( m => m.BuyservicePageModule)
+  },
+  {
+    path: 'promotions',
+    loadChildren: () => import('./promotions/promotions.module').then( m => m.PromotionsPageModule)
+  },
+  {
+    path: 'news-blogs',
+    loadChildren: () => import('./news-blogs/news-blogs.module').then( m => m.NewsBlogsPageModule)
+  },
+  {
+    path: 'galleries',
+    loadChildren: () => import('./galleries/galleries.module').then( m => m.GalleriesPageModule)
+  },
+  {
+    path: 'about-us',
+    loadChildren: () => import('./about-us/about-us.module').then( m => m.AboutUsPageModule)
+  },
+  {
+    path: 'contact-us',
+    loadChildren: () => import('./contact-us/contact-us.module').then( m => m.ContactUsPageModule)
+  },
+  {
+    path: 'our-team',
+    loadChildren: () => import('./our-team/our-team.module').then( m => m.OurTeamPageModule)
+  },
+  {
+    path: 'appointment',
+    loadChildren: () => import('./appointment/appointment.module').then( m => m.AppointmentPageModule)
   }
 ];
 @NgModule({

@@ -1,7 +1,7 @@
 <ion-menu contentId="main-content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Services</ion-title>
+      <ion-title>Home</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
@@ -46,7 +46,7 @@
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
       <ion-title style="text-align: center; font-size: 30px; padding-right: 70px">
-        Services
+        Request an appointment
       </ion-title>
     </ion-toolbar>
   </ion-header>
@@ -57,24 +57,5 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-item *ngFor="let service of services">
-    <ion-card>
-      <img src={{service.image}} height="auto">
-      <ion-card-header>
-        <ion-card-title>{{service.name}}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-text><h3>{{service.description}}</h3></ion-text><br>
-        <ion-item class="ion-no-padding" lines="none">
-          <ion-label color="dark"><h2>${{service.price}} per {{service.duration}}</h2></ion-label>
-          <ion-buttons slot="end"><ion-button fill="solid" color="primary" (click)="openCart(service)">
-            Buy Now</ion-button></ion-buttons>
-        </ion-item>
-        
-      </ion-card-content>
-    </ion-card>
-    
-  </ion-item>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
 </ion-content>
+
