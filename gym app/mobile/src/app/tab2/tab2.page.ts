@@ -5,6 +5,7 @@ import { CartService } from '../cart.service';
 import { BehaviorSubject } from 'rxjs';
 import { ModalController } from '@ionic/angular';
 import { CartModelPage } from '../cart-model/cart-model.page';
+import { ProductItemPage } from '../product-item/product-item.page';
 
 @Component({
   selector: 'app-tab2',
@@ -57,5 +58,17 @@ export class Tab2Page implements OnInit{
   }
   checkSoldOut(product: any) {
     return (product.inStock <= 0);
+  }
+
+  async openProduct(product: any) {
+    let model = await this.modalCtrl.create({
+      component: ProductItemPage,
+      cssClass: 'product-item',
+      componentProps: { product }
+    });
+    model.onWillDismiss().then(()=> {
+      this.fab.nativeElement.classList.remove('animated', 'bounceOutLeft');
+    });
+    model.present();
   }
 }

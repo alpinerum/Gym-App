@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-text-end">
+    <ion-button (click)="close()" fill="clear" color="dark">
+      <ion-icon name="close" slot="start"></ion-icon>
+    </ion-button>
+  </div>
+
+  <div class="ion-padding">
+    <img src={{product.image}} height="auto">
+    <h1>{{product.name}}</h1>
+    <h4>{{product.category}}</h4>
+    <ion-text>{{product.description}}</ion-text><br>
+    <ion-item class="ion-no-padding" lines="none">
+      <ion-label color="dark"><h2>${{product.price}}</h2></ion-label>
+      <ion-buttons slot="end"><ion-button fill="solid" color="primary" (click)="addToCart(product)" [disabled]="checkSoldOut(product)">
+        Add to Cart</ion-button></ion-buttons>
+    </ion-item>
+    quantity: {{product.inStock}}
+  </div>
+  
+</ion-content>
