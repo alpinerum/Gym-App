@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AlertController, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-appointment',
@@ -14,7 +15,7 @@ export class AppointmentPage {
     description: new FormControl('', [Validators.required])
   });
 
-  constructor() { }
+  constructor(private alertCtrl: AlertController, private modalCtrl: ModalController) { }
 
   get name() {
     return this.form.get('name');
@@ -32,7 +33,14 @@ export class AppointmentPage {
     return this.form.get('description');
   }
 
-  submitForm() {
-    
+  async submitForm() {
+    let alert = await this.alertCtrl.create({
+      header: 'Success!',
+      message: 'Your request has been sent!',
+      buttons: ['OK']
+    });
+    alert.present().then(()=> {
+      this.modalCtrl.dismiss();
+    });
   }
 }

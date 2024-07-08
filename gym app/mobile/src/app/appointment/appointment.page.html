@@ -57,5 +57,51 @@
     </ion-toolbar>
   </ion-header>
 
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input #nameRef="ngModel" type="text" class="form-control" placeholder="Enter the Name" formControlname="name" id="name" required ngModel>
+    </div>
+
+    <div class="alert alert-danger" *ngIf="name?.invalid && name?.touched">
+        <div *ngIf="nameRef.errors">
+            <div *ngIf="nameRef.errors['required']">Name is required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input #emailRef="ngModel" type="text" class="form-control" placeholder="Enter the Email" formControlname="email" id="email" required ngModel>
+  </div>
+
+  <div class="alert alert-danger" *ngIf="email?.invalid && email?.touched">
+      <div *ngIf="emailRef.errors">
+          <div *ngIf="emailRef.errors['required']">Email is required</div>
+      </div>
+  </div>
+
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <input #categoryRef="ngModel" type="textarea" class="form-control" placeholder="Enter the Category" formControlname="category" id="category" required ngModel>
+    </div>
+
+    <div class="alert alert-danger" *ngIf="categoryRef.invalid && categoryRef.touched">
+      <div *ngIf="categoryRef.errors">
+          <div *ngIf="categoryRef.errors['required']">Category is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <input #descriptionRef="ngModel" type="text" class="form-control" placeholder="Enter the Description" formControlname="description" id="description" required ngModel>
+    </div>
+
+    <div class="alert alert-danger" *ngIf="descriptionRef.invalid && descriptionRef.touched">
+        <div *ngIf="descriptionRef.errors">
+            <div *ngIf="descriptionRef.errors['required']">Description is required</div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+</form>
 </ion-content>
 
