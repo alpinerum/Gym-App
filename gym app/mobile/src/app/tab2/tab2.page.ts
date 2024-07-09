@@ -43,8 +43,9 @@ export class Tab2Page implements OnInit{
     this.cart = this.cartService.getCart();
     this.itemCount = this.cartService.getCartItemCount();
   }
-  addToCart(product: any) {
+  addToCart(e: any, product: any) {
     this.cartService.addProduct(product);
+    e.stopPropagation();
   }
   async openCart() {
     let model = await this.modalCtrl.create({

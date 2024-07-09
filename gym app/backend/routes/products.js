@@ -38,7 +38,7 @@ router.get('/getProducts/:category', (req, res)=>{
         }
         else {return res.json(404, {error: 1, msg: "category not found"});}
     });
-})
+});
 router.patch('/changeStock/:name/:quantity', (req, res)=>{
     Product.findOne({where: {name: req.params.name}}).then((product)=>{
         if (product != null) {
@@ -54,5 +54,16 @@ router.patch('/changeStock/:name/:quantity', (req, res)=>{
         }
         else {return res.status(404).json({error: 1, msg: "product not found"});}
     })
-})
+});
+
+router.delete('/deleteProduct/:name', (req, res)=>{
+    Product.findOne({where: {name: req.params.name}}).then((product)=>{
+        if(product){
+            console.log(req);
+            product = null;
+            return res.status(200).send(product);
+        }
+        return res.status(404).json({error: 1, msg: "product not found"});
+    });
+});
 module.exports = router;

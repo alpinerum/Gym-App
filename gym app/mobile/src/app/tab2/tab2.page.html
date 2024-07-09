@@ -92,7 +92,7 @@
             <ion-card-content>
               <ion-label color="dark"><h2>${{product.price}}</h2></ion-label>
               <ion-item class="ion-no-padding" lines="none">
-                <ion-buttons><ion-button fill="solid" color="primary" (click)="addToCart(product)" [disabled]="checkSoldOut(product)">
+                <ion-buttons><ion-button fill="solid" color="primary" (click)="addToCart($event, product)" [disabled]="checkSoldOut(product)">
                   Add to Cart</ion-button></ion-buttons>
               </ion-item>
               quantity: {{product.inStock}}
