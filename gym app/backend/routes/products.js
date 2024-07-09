@@ -30,6 +30,15 @@ router.get('/getProduct/:id', (req, res)=>{
     });
 });
 
+router.get('/getProducts/:category', (req, res)=>{
+    Product.findAll({where: {category: req.params.category}}).then((products)=>{
+        console.log(req.params.category);
+        if (products != null) {
+            return res.send(products);
+        }
+        else {return res.json(404, {error: 1, msg: "category not found"});}
+    });
+})
 router.patch('/changeStock/:name/:quantity', (req, res)=>{
     Product.findOne({where: {name: req.params.name}}).then((product)=>{
         if (product != null) {

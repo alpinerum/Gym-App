@@ -64,6 +64,14 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-item>
+    <ion-select label="Category: " placeholder="Choose a category..." (ionChange)="filterCategory($event)">
+      <ion-select-option value="All">All Products</ion-select-option>
+      <ion-select-option value="Accessories">Accessories</ion-select-option>
+      <ion-select-option value="Apparel">Apparel</ion-select-option>
+      <ion-select-option value="Equipment">Equipment</ion-select-option>
+    </ion-select>
+  </ion-item>
   <ion-grid>
     <ion-row>
       <ion-col size="6" *ngFor="let product of products">

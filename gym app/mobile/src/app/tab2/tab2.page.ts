@@ -60,6 +60,16 @@ export class Tab2Page implements OnInit{
     return (product.inStock <= 0);
   }
 
+  filterCategory(category : any) {
+    console.log(category.detail.value);
+    if (category.detail.value == 'All' || category.detail.value == '') {
+      this.service.getProducts().subscribe((res)=>this.products=res);
+    }
+    else {
+      this.service.filterProducts(category.detail.value).subscribe((res)=>this.products=res);
+    }
+    
+  }
   async openProduct(product: any) {
     let model = await this.modalCtrl.create({
       component: ProductItemPage,

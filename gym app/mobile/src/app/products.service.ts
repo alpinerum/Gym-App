@@ -25,4 +25,9 @@ export class ProductsService {
     return this.http.patch<Product[]>(`http://localhost:3000/products/changeStock/${name}/${quantity}`, options);
 
   }
+  filterProducts(category: any):Observable<Product[]> {
+    const headers = new HttpHeaders({'Content-Type': 'application/json', 'Accept': 'application/json'});
+    const options = {headers: headers};
+    return this.http.get<Product[]>(`http://localhost:3000/products/getProducts/${category}`, options);
+  }
 }
