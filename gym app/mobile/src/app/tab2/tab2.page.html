@@ -72,6 +72,14 @@
       <ion-select-option value="Equipment">Equipment</ion-select-option>
     </ion-select>
   </ion-item>
+
+  <ion-item>
+    <ion-select label="Sort by: " placeholder="Order" (ionChange)="sortProducts($event)">
+      <ion-select-option value="Alphabetically">Alphabetically</ion-select-option>
+      <ion-select-option value="priceLtoH">Price Low to High</ion-select-option>
+      <ion-select-option value="priceHtoL">Price High to Low</ion-select-option>
+    </ion-select>
+  </ion-item>
   <ion-grid>
     <ion-row>
       <ion-col size="6" *ngFor="let product of products">

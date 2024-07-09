@@ -70,6 +70,30 @@ export class Tab2Page implements OnInit{
     }
     
   }
+
+  sortProducts(order: any) {
+    if (order.detail.value == 'Alphabetically') {
+      this.products.sort((a, b)=> a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+    }
+    else if (order.detail.value == 'priceLtoH') {
+      this.products.sort((a, b)=> {
+        if (a.price > b.price) {
+          return 1;
+        }
+        return 0;
+      });
+    }
+    else if (order.detail.value == 'priceHtoL') {
+      this.products.sort((a, b)=> {
+        if (a.price < b.price) {
+          return 1;
+        }
+        return 0;
+      });
+    }
+    
+  }
+
   async openProduct(product: any) {
     let model = await this.modalCtrl.create({
       component: ProductItemPage,
